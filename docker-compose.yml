@@ -1,0 +1,22 @@
+ Конфигурация сервисов для приложения
+services:
+  api:
+    build: . # Сборка образа из текущей директории (Dockerfile)
+    ports:
+      - "8080:8080" # Прокидываем порт 8080 хоста на 8080 контейнера
+    depends_on:
+      - postgres # Зависимость от сервиса postgres
+    environment:
+      - DB_HOST=postgres # Хост базы данных (имя сервиса в Docker Compose)
+      - DB_PORT=5432 # Порт PostgreSQL внутри сети Docker
+      - DB_USER=postgres # Пользователь базы
+      - DB_PASSWORD=123 # Пароль базы
+      - DB_NAME=person_api # Имя базы данных
+      - PORT=8080 # Порт приложения
+  postgres:
+    image: postgres:16.4 # Образ PostgreSQL
+    ports:
+      - "5434:5432" # Прокидываем порт 5434 хоста на 5432 контейнера
+    environment:
+      - POSTGRES_PASSWORD=123 # Пароль для PostgreSQL
+      - POSTGRES_DB=person_api # Имя базы данных
