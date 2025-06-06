@@ -9,7 +9,7 @@ REST API для управления данными людей с использ
 ## Установка
 1. Склонируй репозиторий:
     ```bash
-    git clone <репозиторий>
+    git clone https://github.com/Ekmor73/person-api.git
     cd person-api
     ```
 2. Установи зависимости:
